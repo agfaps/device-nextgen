@@ -154,7 +154,7 @@ String retrieveMessage(String topic)
         if (it != mqttMessage.end())
         {
             // retrieve
-            std::string tmp = mqttMessage.at(topic.c_str());
+            std::string tmp = mqttMessage.at(std::string(topic.c_str()));
             // deregister
             mqttMessage.erase(it);
             
