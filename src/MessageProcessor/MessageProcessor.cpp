@@ -44,6 +44,7 @@ MessageProcessor &MessageProcessor::getSingleInstance()
 
 void MessageProcessor::start()
 {
+    // binary semaphore for sincronization async access
     bin_sem = xSemaphoreCreateMutex();
 
     delay(100);
@@ -90,7 +91,7 @@ void callback(char* topic, byte* message, unsigned int length)
         // store topic and message as pair in an unordered map
         registerMessage(_topic, _message);
     }
-    // else if ()
+    // else if (_topic.equals("another/topic") == 1)
     // {
     //     // process another topic
     // }

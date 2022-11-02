@@ -251,9 +251,12 @@ void mqttWifiOtaUpdateThread(void *pvParameters)
 
     while (true)
     {
+        // retrieve message from "/update/url/" topic if any
         message = messageProcessor.getMessage(String("/update/url/"));
         if (message != "false")
         {
+            // if found related message, parse binary name and host name.
+            // get binary and update
             instance->getBinary(getBinaryName(message), getHostName(message));
         }
         vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS( intervalMqttWifiOtaUpdateThread ));

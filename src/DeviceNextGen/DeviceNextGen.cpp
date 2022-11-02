@@ -10,6 +10,7 @@ static SystemMonitoring * systemMonitoring;
 
 void Device::init()
 {
+    // almost 1M baud for faster LOG output
     Serial.begin(921600);
     while (!Serial);
     Serial.println();
