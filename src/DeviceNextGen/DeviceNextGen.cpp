@@ -2,9 +2,11 @@
 #include "DeviceNextGen.h"
 #include "MessageProcessor/MessageProcessor.h"
 #include "OtaUpdate/MqttWifiOtaUpdate.h"
+#include "SystemMonitoring/SystemMonitoring.h"
 
 static const char* TAG = "Device";
 static MqttWifiOtaUpdate * mqttWifiOtaUpdate;
+static SystemMonitoring * systemMonitoring;
 
 void Device::init()
 {
@@ -26,4 +28,6 @@ void Device::start()
     mqttWifiOtaUpdate->start();
 
     // init SystemMonitoring
+    systemMonitoring = new SystemMonitoring();
+    systemMonitoring->start();
 }

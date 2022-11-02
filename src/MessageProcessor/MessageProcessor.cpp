@@ -172,7 +172,7 @@ String retrieveMessage(String topic)
 
 String MessageProcessor::getMessage(String topic)
 {
-    retrieveMessage(topic);
+    return retrieveMessage(topic);
 }
 
 void MessageProcessor::sendMessage(String topic, String message)
